@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
+import { useNavigate  } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
@@ -25,30 +26,49 @@ const style = {
 };
 
 export default function BasicModal() {
+  const history = useNavigate ();
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 // for password
-const [showPassword, setShowPassword] = React.useState(false);
-
-const handleClickShowPassword = () => setShowPassword((show) => !show);
-
-const handleMouseDownPassword = (event) => {
-  event.preventDefault();
-};
 const [formData, setFormData] = React.useState({ username: '', password: '' });
+const [showPassword, setShowPassword] = React.useState(false);
+const [errors, setErrors] = React.useState({});
 
 const handleInputChange = (event) => {
   const { name, value } = event.target;
   setFormData({ ...formData, [name]: value });
 };
 
-const handleSubmit = (event) => {
-  event.preventDefault();
-  // You can perform validation and login logic here
-  console.log('Submitted:', formData.username, formData.password);
+const handlePasswordVisibilityToggle = () => {
+  setShowPassword(!showPassword);
 };
 
+const handleSubmit = (event) => {
+  event.preventDefault();
+  const { username, password } = formData;
+  
+  // Form validation
+  const validationErrors = {};
+  if (username.trim() === '') {
+    validationErrors.username = 'Username is required';
+  }
+  if (password.trim() === '') {
+    validationErrors.password = 'Password is required';
+  }
+
+  if (Object.keys(validationErrors).length === 0) {
+    // You can perform authentication logic here if the form is valid
+    console.log('Submitted:', username, password);
+    // Reset the form after submission
+    setFormData({ username: '', password: '' });
+
+    // Redirect to the home page
+    history('/about');
+  } else {
+    setErrors(validationErrors);
+  }
+};
 
 
   return (
@@ -62,7 +82,7 @@ const handleSubmit = (event) => {
       >
         <Box sx={style}>
           <h2>Welcome</h2>
-          <form action='home.js' onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit}>
         <TextField
           label="Username"
           variant="outlined"
@@ -71,19 +91,35 @@ const handleSubmit = (event) => {
           onChange={handleInputChange}
           fullWidth
           margin="normal"
+          error={!!errors.username}
+          helperText={errors.username}
         />
         <TextField
           label="Password"
           variant="outlined"
-          type="password"
+          type={showPassword ? 'text' : 'password'}
           name="password"
           value={formData.password}
           onChange={handleInputChange}
           fullWidth
           margin="normal"
+          error={!!errors.password}
+          helperText={errors.password}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton
+                  onClick={handlePasswordVisibilityToggle}
+                  edge="end"
+                >
+                  {showPassword ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
         />
-        
         <Button type="submit" variant="contained" color="primary">
+
           Login
         </Button>
       </form>
