@@ -36,6 +36,18 @@ const handleClickShowPassword = () => setShowPassword((show) => !show);
 const handleMouseDownPassword = (event) => {
   event.preventDefault();
 };
+const [formData, setFormData] = React.useState({ username: '', password: '' });
+
+const handleInputChange = (event) => {
+  const { name, value } = event.target;
+  setFormData({ ...formData, [name]: value });
+};
+
+const handleSubmit = (event) => {
+  event.preventDefault();
+  // You can perform validation and login logic here
+  console.log('Submitted:', formData.username, formData.password);
+};
 
 
 
@@ -50,39 +62,31 @@ const handleMouseDownPassword = (event) => {
       >
         <Box sx={style}>
           <h2>Welcome</h2>
-          <form onSubmit={}>
-
-         
-        <TextField sx={{m:3}}
-        fullWidth
-        type='email'
-        label="Enter Your Email "
-        placeholder="Type Email Here"
-        multiline
-      />
-       <FormControl  variant="outlined"  fullWidth>
-          <InputLabel htmlFor="outlined-adornment-password" >Password</InputLabel>
-          <OutlinedInput
-            id="outlined-adornment-password"
-            placeholder='Password'
-            type={showPassword ? 'text' : 'password'}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  edge="end"
-                >
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
-            label="Password"
-          />
-        </FormControl>
-        <Button type='submit' variant="contained" fullWidth sx={{m:3,}}>Login</Button>
-        </form>
+          <form action='home.js' onSubmit={handleSubmit}>
+        <TextField
+          label="Username"
+          variant="outlined"
+          name="username"
+          value={formData.username}
+          onChange={handleInputChange}
+          fullWidth
+          margin="normal"
+        />
+        <TextField
+          label="Password"
+          variant="outlined"
+          type="password"
+          name="password"
+          value={formData.password}
+          onChange={handleInputChange}
+          fullWidth
+          margin="normal"
+        />
+        
+        <Button type="submit" variant="contained" color="primary">
+          Login
+        </Button>
+      </form>
         </Box>
       </Modal>
     </div>
