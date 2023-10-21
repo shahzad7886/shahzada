@@ -27,7 +27,7 @@ const style = {
 export default function BasicModal() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => setOpen(true);
 // for password
 const [showPassword, setShowPassword] = React.useState(false);
 
@@ -49,19 +49,18 @@ const handleMouseDownPassword = (event) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <h2>LOG IN</h2>
-          <TextField
-          fullWidth
-          label="Enter Your Name "
-          placeholder="Type Name Here"
-          multiline
-        /> <TextField sx={{m:3}}
+          <h2>Welcome</h2>
+          <form onSubmit={}>
+
+         
+        <TextField sx={{m:3}}
         fullWidth
+        type='email'
         label="Enter Your Email "
         placeholder="Type Email Here"
         multiline
       />
-       <FormControl  variant="outlined" fullWidth>
+       <FormControl  variant="outlined"  fullWidth>
           <InputLabel htmlFor="outlined-adornment-password" >Password</InputLabel>
           <OutlinedInput
             id="outlined-adornment-password"
@@ -82,7 +81,8 @@ const handleMouseDownPassword = (event) => {
             label="Password"
           />
         </FormControl>
-        <Button variant="outlined" fullWidth sx={{m:3,}}>Login</Button>
+        <Button type='submit' variant="contained" fullWidth sx={{m:3,}}>Login</Button>
+        </form>
         </Box>
       </Modal>
     </div>

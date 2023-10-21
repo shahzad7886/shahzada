@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 // import { createMuiTheme, ThemeProvider, Button } from '@mui/material';
-import Home from './pages/Home.js'
+import Home from './pages/home.js'
 function App() {
 
   const theme = createTheme({
