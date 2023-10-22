@@ -9,11 +9,11 @@ export default function home() {
     <>
     <Container >
       <Box mt={3} className="background-img" p={3}>
-      <Typography variant="h4" sx={{ marginTop: '20px', }}>
-      Title of a longer featured blog post
+      <Typography variant="h4" sx={{ marginTop: '50px', }}>
+     React Js Ecommerce  Template
       </Typography>
       <Typography variant='h6' sx={{ marginTop: '20px',width:"500px",}}>
-      Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.
+      All You Need to Build a Market Website
       </Typography>
       <Button sx={{ marginTop: '20px'}} variant='contained'>See More</Button>
       </Box>

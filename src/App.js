@@ -8,6 +8,7 @@ import  Home  from './pages/home';
 import About from './pages/About';
 import Product from './pages/product';
 import Admin from './dasboard/Admin.js';
+import Seller from './seller/createAccount'
 function App() {
  // State for theme color
  const savedThemeColor = localStorage.getItem('selectedThemeColor') || '#2196F3';
@@ -115,6 +116,7 @@ function App() {
      <Route path="/about" Component={About}/>
      <Route path="/product" Component={Product}/>
      <Route path="/admin" Component={Admin}/>
+     <Route path="/seller/create-account" Component={Seller}/>
     </Routes>
 
 </BrowserRouter>
