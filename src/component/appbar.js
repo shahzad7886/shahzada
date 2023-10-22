@@ -1,33 +1,31 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import Modal from '../component/modal.js'
-export default function ButtonAppBar(handleOpen) {
+import React from 'react';
+import { AppBar, Toolbar, IconButton, Typography,FormControlLabel,Checkbox,FormGroup } from '@mui/material';
+import PaletteIcon from '@mui/icons-material/Palette';
+import WbSunnyIcon from '@mui/icons-material/WbSunny';
+import Brightness2OutlinedIcon from '@mui/icons-material/Brightness2Outlined';
+const Navbar = ({ toggleSidebar,darkMode,toggleDarkMode }) => {
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar color="warning">
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Advance Tech
-          </Typography>
-         
-         < Modal onClick={handleOpen}/>
-        </Toolbar>
-      </AppBar>
-    </Box>
+    <AppBar position="static">
+      <Toolbar>
+        <Typography variant="h6" sx={{ flexGrow: 1 }}>
+          Your E-Commerce Website
+        </Typography>
+        <FormGroup>
+  <FormControlLabel
+    control={<Checkbox  icon={<WbSunnyIcon />} checkedIcon={<Brightness2OutlinedIcon />} color='error' checked={darkMode} onChange={toggleDarkMode} />}
+  />
+</FormGroup>
+        <IconButton
+          edge="start"
+          color="inherit"
+          aria-label="menu"
+          onClick={toggleSidebar}
+        >
+          <PaletteIcon />
+        </IconButton>
+      </Toolbar>
+    </AppBar>
   );
-}
+};
+
+export default Navbar;
