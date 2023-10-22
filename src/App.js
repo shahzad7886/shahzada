@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import  Home  from './pages/home';
 import About from './pages/About';
 import Product from './pages/product';
+import Admin from './dasboard/Admin.js';
 function App() {
  // State for theme color
  const savedThemeColor = localStorage.getItem('selectedThemeColor') || '#2196F3';
@@ -113,6 +114,7 @@ function App() {
    <Route path="/" Component={Home}/>
      <Route path="/about" Component={About}/>
      <Route path="/product" Component={Product}/>
+     <Route path="/admin" Component={Admin}/>
     </Routes>
 
 </BrowserRouter>
