@@ -1,38 +1,24 @@
-import { Button, Container,Typography,Grid,Card,CardMedia,CardContent} from '@mui/material'
-// import Navbar from '../component/appbar'
 import React from 'react'
-
+import {Container,Typography,Box, Button} from '@mui/material'
+import RenderCategories from './renderCategories.js';
 export default function home() {
+
+
+
   return (
-    <div>
-    
-    <Container>
-      <Typography variant="h4" style={{ marginTop: '20px' }}>
-        Featured Products
+    <>
+    <Container >
+      <Box mt={3} className="background-img" p={3}>
+      <Typography variant="h4" sx={{ marginTop: '20px', }}>
+      Title of a longer featured blog post
       </Typography>
-      <Grid container spacing={2} style={{ marginTop: '20px' }}>
-        <Grid item xs={12} sm={6} md={4}>
-          <Card>
-            <CardMedia
-              style={{ height: 140 }}
-              image="product-image-url"
-              title="Product Title"
-            />
-            <CardContent>
-              <Typography variant="h6">Product Title</Typography>
-              <Typography variant="body2" color="textSecondary">
-                Product Description
-              </Typography>
-              <Typography variant="h6">$99.99</Typography>
-              <Button variant="contained" color="primary">
-                Add to Cart
-              </Button>
-            </CardContent>
-          </Card>
-        </Grid>
-        {/* Add more products in a similar manner */}
-      </Grid>
+      <Typography variant='h6' sx={{ marginTop: '20px',width:"500px",}}>
+      Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.
+      </Typography>
+      <Button sx={{ marginTop: '20px'}} variant='contained'>See More</Button>
+      </Box>
+     <RenderCategories/>
     </Container>
-  </div>
+  </>
   )
 }

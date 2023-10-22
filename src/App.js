@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
+import './App.css'
 import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 import Sidebar from './Sidebar';
 import Navbar from './component/appbar';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import  Home  from './pages/home';
 import About from './pages/About';
-
+import Product from './pages/product';
 function App() {
  // State for theme color
  const savedThemeColor = localStorage.getItem('selectedThemeColor') || '#2196F3';
@@ -24,6 +25,7 @@ function App() {
    Green: '#4CAF50',
    Yellow: '#FF9800',
    Purple: '#9C27B0',
+   RAL :"#44e632",
  };
 
  // Create light and dark themes
@@ -97,7 +99,6 @@ function App() {
       <CssBaseline />
       <Navbar toggleSidebar={toggleSidebar} darkMode={darkMode} toggleDarkMode={() => setDarkMode(!darkMode)} />
       <Sidebar
-      variant="persistent" anchor="right"
         themeColors={themeColors}
         theme={currentTheme}
         changeTheme={changeTheme}
@@ -111,6 +112,7 @@ function App() {
     <Routes>
    <Route path="/" Component={Home}/>
      <Route path="/about" Component={About}/>
+     <Route path="/product" Component={Product}/>
     </Routes>
 
 </BrowserRouter>

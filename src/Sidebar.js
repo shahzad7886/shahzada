@@ -1,49 +1,28 @@
-// import React from 'react';
-// import { Drawer, List, ListItem, ListItemIcon,Box, ListItemText, IconButton, Button } from '@mui/material';
-// import PaletteIcon from '@mui/icons-material/Palette';
-// import CloseIcon from '@mui/icons-material/Close';
-// const Sidebar = ({  themeColors, changeTheme, theme, isOpen, toggleSidebar  }) => {
-//   return (
-//     <Drawer variant="temporary" open={isOpen}>
-//       <IconButton   onClick={toggleSidebar}>
-//         <CloseIcon />
-//       </IconButton>
-// <List>
-//         {themeColors.map((color, index) => (
-//           <ListItem
-//             button
-//             key={index}
-//             style={{
-//               backgroundColor: color,
-//               cursor: 'pointer',
-//               width:"100px",
-//               height:"100px",
-//             }}
-//             onClick={() => changeTheme(color)}>
-// <ListItemText primary={theme.name} />
-//           </ListItem>
-//         ))}
-//       </List>
-
-//     </Drawer>
-//   );
-// };
-
-// export default Sidebar;
-
 import React from 'react';
-import { Drawer, List, ListItem, ListItemText, IconButton } from '@mui/material';
+import { Drawer,Grid,Paper, List, ListItem, ListItemText, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-
+import { experimentalStyled as styled } from '@mui/material/styles';
 const Sidebar = ({ themeColors, theme, changeTheme, isOpen, toggleSidebar,sidebarRef }) => {
+
+    const Item = styled(Paper)(({ theme }) => ({
+        backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+        ...theme.typography.body1,
+        fontWeight: 700,
+        padding: theme.spacing(1),
+        textAlign: 'center',
+        // color: theme.palette.text.info,
+        color:'#fff'
+      }));
+
   return (
-    <Drawer variant="persistent" anchor="right" open={isOpen} ref={sidebarRef}>
+    <Drawer sx={{ width: '240px', }}
+    variant="persistent" anchor="right" open={isOpen} ref={sidebarRef}>
       <div>
         <IconButton onClick={toggleSidebar}>
-          <CloseIcon />
+          <CloseIcon color='#fff'  />
         </IconButton>
       </div>
-      <List>
+      {/* <List>
       {Object.entries(themeColors).map(([themeName, color]) => (
           <ListItem
             button
@@ -57,7 +36,24 @@ const Sidebar = ({ themeColors, theme, changeTheme, isOpen, toggleSidebar,sideba
             <ListItemText primary={themeName} />
           </ListItem>
         ))}
-      </List>
+      </List> */}
+
+      <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+      {Object.entries(themeColors).map(([themeName, color]) => (
+    <Grid item xs={2} sm={4} md={4} key={themeName}>
+      <Item
+      button
+      key={themeName}
+      style={{
+        backgroundColor: color,
+        cursor: 'pointer',
+      }}
+      onClick={() => changeTheme(color)}
+      >{themeName}</Item>
+    </Grid>
+  ))}
+</Grid>
+
     </Drawer>
   );
 };
