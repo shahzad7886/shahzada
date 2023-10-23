@@ -1,5 +1,5 @@
 {
-  "name": "awesomeapp",
+  "name": "Ecommerce",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -10,14 +10,21 @@
     "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.2",
     "@mui/styles": "^5.14.14",
+    "@nivo/bar": "^0.83.0",
+    "@nivo/geo": "^0.83.0",
+    "@nivo/line": "^0.83.0",
+    "@nivo/pie": "^0.83.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "add": "^2.0.6",
+    "nivo": "^0.31.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-pro-sidebar": "^1.1.0-alpha.1",
     "react-router-dom": "^6.17.0",
     "react-scripts": "5.0.1",
+    "react-update": "^0.4.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
